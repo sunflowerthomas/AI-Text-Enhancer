@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AI Text Enhancer (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AI Text Enhancer (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
