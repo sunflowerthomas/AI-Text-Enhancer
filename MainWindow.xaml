@@ -13,7 +13,32 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid>
+    <Grid Padding="16" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBox x:Name="TextEditor"
+         AcceptsReturn="True"
+         TextWrapping="Wrap"
+         PlaceholderText="Enter text to be enhanced"
+         Header="Text Enhancer"
+         ScrollViewer.VerticalScrollBarVisibility="Auto"
+         Grid.Column="0"
+         Grid.Row="0"
+         HorizontalAlignment="Stretch"
+         VerticalAlignment="Stretch"/>
+
+        <StackPanel Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            Spacing="4"
+            Grid.Row="1" Grid.Column="0">
+            <Button Content="Clear"/>
+            <Button Content="Enhance" Style="{StaticResource AccentButtonStyle}"/>
+        </StackPanel>
     </Grid>
 </Window>
