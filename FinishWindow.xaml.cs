@@ -21,18 +21,22 @@ namespace AI_Text_Enhancer
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class FinishWindow : Window
     {
-        public MainWindow()
+        public FinishWindow()
         {
             InitializeComponent();
-
             // Hides the default system title bar.
             ExtendsContentIntoTitleBar = true;
             // Replace system title bar with the WinUI TitleBar control. 
             SetTitleBar(SimpleTitleBar);
         }
-        // private async void ClearClick(object sender, RoutedEventArgs e) {
-
+        private void TitleBar_BackRequested(TitleBar sender, object args)
+        {
+            if (RootFrame.CanGoBack)
+            {
+                RootFrame.GoBack();
+            }
+        }
     }
 }

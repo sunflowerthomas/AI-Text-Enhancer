@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Window
-    x:Class="AI_Text_Enhancer.MainWindow"
+    x:Class="AI_Text_Enhancer.FinishWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AI_Text_Enhancer"
@@ -24,17 +24,26 @@
         </Grid.ColumnDefinitions>
 
         <TitleBar x:Name="SimpleTitleBar"
-                  Title="AI Text Enhancer">
+          Title="AI Text Enhancer"
+          IsBackButtonVisible="True"
+          IsBackButtonEnabled="{x:Bind RootFrame.CanGoBack, Mode=OneWay}"
+          BackRequested="TitleBar_BackRequested">
             <TitleBar.IconSource>
                 <FontIconSource Glyph="&#xF4AA;"/>
             </TitleBar.IconSource>
         </TitleBar>
 
-        <TextBox x:Name="TextEditor"
-         AcceptsReturn="True"
+        <NavigationView x:Name="RootNavigationView" Grid.Row="0"
+            IsBackButtonVisible="Collapsed"
+            IsPaneToggleButtonVisible="False"
+            IsSettingsVisible="False"
+            IsPaneVisible="False"
+            Visibility="Collapsed">
+            <Frame x:Name="RootFrame" />
+        </NavigationView>
+
+        <TextBlock x:Name="TextViewer"
          TextWrapping="Wrap"
-         PlaceholderText="Enter text to be enhanced"
-         Header="Text Enhancer"
          ScrollViewer.VerticalScrollBarVisibility="Auto"
          Grid.Column="0"
          Grid.Row="1"
@@ -42,11 +51,10 @@
          VerticalAlignment="Stretch"/>
 
         <StackPanel Orientation="Horizontal"
-            HorizontalAlignment="Right"
+            HorizontalAlignment="Center"
             Spacing="4"
             Grid.Row="2" Grid.Column="0">
-            <Button Content="Clear" />
-            <Button Content="Enhance" Style="{StaticResource AccentButtonStyle}"/>
+            <Button Content="Save as .txt" Style="{StaticResource AccentButtonStyle}"/>
         </StackPanel>
     </Grid>
 </Window>
